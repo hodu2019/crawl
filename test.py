@@ -18,10 +18,8 @@ table_header = table.find("tr", class_ = "tr_header")
 table_header = table_header.find_all("td")
 
 data_header = []
-for td in table_header:
-  
+for td in table_header: 
   data_header.append(td.text)
-
 data_exel = []
 print(len(data_header))
 
@@ -32,11 +30,16 @@ for tr in tr_list:
   for td in td_list:
     print(index)
     content = td.string
-    data[data_header[index]] = content
-    if index < len(data_header) - 1:
-      index += 1
-    else:
+    print(content)
+    if content == None:
       pass
+    else:
+      data[data_header[index]] = content
+      data = OrderedDict(data)
+      if index < len(data_header) - 1:
+        index += 1
+      else:
+        pass
 
   data_exel.append(data)
 print(data_exel)
